@@ -2,9 +2,15 @@
 <html lang="pt-BR" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="google-site-verification" content="S33lhNsyfXhgDlpsDM53pjFTy-_5t2dx1vFQqqgSqX4" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Couteng Engenharia Civil | Regularização, AVCB e Usucapião</title>
+    <title>SPLAN DIGITAL | Digitalização de Projetos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -14,71 +20,24 @@
         theme: {
           extend: {
             colors: {
-              // CORES COUTENG: Azul (#237AAB) e Vermelho (#BE3423)
-              "couteng-primary": "#237AAB", // Azul (Legalidade/Confiança)
-              "couteng-highlight": "#BE3423", // Vermelho (Ação/Destaque/AVCB)
-              "couteng-dark": "#1A1A1A", // Quase Preto (Solidez)
-              "couteng-light": "#F7F7F7", // Off-White (Limpeza)
+              // Cores da marca SPLAN DIGITAL (Ajustadas do portfólio)
+              "splan-primary": "#F7B500", // Dourado/Amarelo (para destaques)
+              "splan-dark": "#6B0F1A", // Vinho (para fundos escuros e títulos)
+              "splan-light": "#FFFFFF", // Branco
+              "splan-secondary": "#F5F5F5", // Um cinza bem claro para fundos
             },
             fontFamily: {
-              sans: ["Archivo Variable", "sans-serif"],
-              mono: ["Space Mono", "monospace"],
+              sans: ["Montserrat", "sans-serif"],
             },
           },
         },
       };
     </script>
     <style>
-      /* 1. CARREGAMENTO DAS FONTES LOCAIS (@font-face) */
-      /* O caminho 'Assets/fonts/' foi mantido para compatibilidade com a sua estrutura do GitHub Pages. */
-      @font-face {
-        font-family: "Archivo Variable";
-        src: url("Assets/fonts/Archivo/Archivo-VariableFont_wdth,wght.ttf")
-          format("truetype-variations");
-        font-weight: 100 900;
-        font-style: normal;
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: "Space Mono";
-        src: url("Assets/fonts/Space_Mono/SpaceMono-Regular.ttf")
-          format("truetype");
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: "Space Mono";
-        src: url("Assets/fonts/Space_Mono/SpaceMono-Bold.ttf")
-          format("truetype");
-        font-weight: 700;
-        font-style: normal;
-        font-display: swap;
-      }
-      /* ---------------------------------------------------------------------- */
-
-      /* 🎨 CORES COUTENG (Aplicadas ao CSS nativo) */
-      .bg-couteng-primary {
-        background-color: #237aab;
-      }
-      .text-couteng-primary {
-        color: #237aab;
-      }
-      .border-couteng-primary {
-        border-color: #237aab;
-      }
-      .text-couteng-highlight {
-        color: #be3423;
-      }
-      .bg-couteng-dark {
-        background-color: #1a1a1a;
-      }
-
       /* Estilo da Seção Hero (Fundo e Overlay) */
       #hero-section {
-        background-image: url("Assets/images/hero-background.jpg");
+        /* CAMINHO ATUALIZADO: */
+        background-image: url("assets/images/hero-bg.jpg");
         background-size: cover;
         background-position: center;
         position: relative;
@@ -90,78 +49,118 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(26, 26, 26, 0.85);
+        background-color: rgba(
+          107,
+          15,
+          26,
+          0.8
+        ); /* 80% de opacidade do splan-dark */
+      }
+
+      /* Estilo da Seção de Frase de Impacto */
+      #impact-phrase-section {
+        /* CAMINHO ATUALIZADO: */
+        background-image: url("assets/images/frase.jpg");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        background-blend-mode: multiply;
+        background-color: rgba(
+          107,
+          15,
+          26,
+          0.7
+        ); /* splan-dark com 70% de opacidade */
       }
 
       /* Estilo para o Header Fixo (Controlado por JS) */
       .header-scrolled {
-        background-color: #1a1a1a;
+        background-color: #6b0f1a; /* splan-dark */
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
-      /* Seção de Destaque */
-      #compliance-highlight {
-        background-image: url("Assets/images/regularizacao-doc.jpg");
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-      }
 
-      #compliance-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(35, 122, 171, 0.7);
+      /* Botão Flutuante WhatsApp */
+      .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        background-color: #25d366;
+        color: #fff;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 100;
+        transition: transform 0.3s ease;
+      }
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+      }
+      .whatsapp-float img {
+        width: 100%;
+        height: auto;
       }
     </style>
   </head>
-  <body class="bg-couteng-light text-couteng-dark font-sans font-light">
+  <body class="bg-splan-secondary text-splan-dark font-sans font-light">
+    <a
+      href="https://wa.me/5511957730797"
+      class="whatsapp-float"
+      target="_blank"
+    >
+      <img src="assets/images/whatsapp.png" alt="Fale Conosco pelo WhatsApp" />
+    </a>
+
     <header
       id="main-header"
       class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
     >
       <div
-        class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
+        class="container mx-auto px-4 sm:px-6 lg:px-8 py-1 flex justify-between items-center"
       >
         <a href="#hero-section">
           <img
-            src="Assets/images/logo Couteng.png"
-            alt="Logo Couteng Engenharia Civil"
-            class="h-16 w-auto transition-opacity duration-300 hover:opacity-80"
+            src="assets/images/logo.png"
+            alt="Logo SPLAN DIGITAL"
+            class="h-32 w-auto transition-opacity duration-300 hover:opacity-80"
           />
         </a>
 
         <nav class="hidden lg:flex space-x-8 items-center">
           <a
             href="#quem-somos"
-            class="text-couteng-light hover:text-couteng-primary transition duration-200 font-medium"
+            class="text-splan-light hover:text-splan-primary transition duration-200 font-medium"
             >Quem Somos</a
           >
           <a
             href="#servicos"
-            class="text-couteng-light hover:text-couteng-primary transition duration-200 font-medium"
+            class="text-splan-light hover:text-splan-primary transition duration-200 font-medium"
             >Serviços</a
           >
           <a
             href="#diferenciais"
-            class="text-couteng-light hover:text-couteng-primary transition duration-200 font-medium"
+            class="text-splan-light hover:text-splan-primary transition duration-200 font-medium"
             >Diferenciais</a
           >
           <a
-            href="https://wa.me/5511933776122"
-            target="_blank"
-            class="py-2 px-6 bg-couteng-highlight text-couteng-light font-bold rounded-lg shadow-lg hover:opacity-90 transition duration-300 transform hover:scale-105"
+            href="#projetos"
+            class="text-splan-light hover:text-splan-primary transition duration-200 font-medium"
+            >Projetos</a
           >
-            Fale Conosco
+          <a
+            href="https://wa.me/5511957730797"
+            target="_blank"
+            class="py-2 px-6 bg-splan-primary text-splan-dark font-bold rounded-lg shadow-lg hover:opacity-90 transition duration-300 transform hover:scale-105"
+          >
+            Solicite um Orçamento
           </a>
         </nav>
 
         <button
           id="mobile-menu-button"
-          class="lg:hidden text-couteng-light p-2 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-couteng-primary"
+          class="lg:hidden text-splan-light p-2 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-splan-primary"
         >
           <svg
             class="w-6 h-6"
@@ -182,28 +181,33 @@
 
       <nav
         id="mobile-menu"
-        class="hidden lg:hidden bg-couteng-dark transition-all duration-300"
+        class="hidden lg:hidden bg-splan-dark transition-all duration-300"
       >
         <div class="flex flex-col space-y-2 p-4">
           <a
             href="#quem-somos"
-            class="text-couteng-light hover:bg-white/10 p-2 rounded-md"
+            class="text-splan-light hover:bg-white/10 p-2 rounded-md"
             >Quem Somos</a
           >
           <a
             href="#servicos"
-            class="text-couteng-light hover:bg-white/10 p-2 rounded-md"
+            class="text-splan-light hover:bg-white/10 p-2 rounded-md"
             >Serviços</a
           >
           <a
             href="#diferenciais"
-            class="text-couteng-light hover:bg-white/10 p-2 rounded-md"
+            class="text-splan-light hover:bg-white/10 p-2 rounded-md"
             >Diferenciais</a
           >
           <a
-            href="https://wa.me/5511933776122"
+            href="#projetos"
+            class="text-splan-light hover:bg-white/10 p-2 rounded-md"
+            >Projetos</a
+          >
+          <a
+            href="https://wa.me/5511957730797"
             target="_blank"
-            class="py-2 px-4 bg-couteng-highlight text-couteng-light font-bold rounded-lg text-center mt-2"
+            class="py-2 px-4 bg-splan-primary text-splan-dark font-bold rounded-lg text-center mt-2"
           >
             Fale Conosco
           </a>
@@ -217,460 +221,810 @@
     >
       <div id="hero-overlay"></div>
       <div class="relative z-10 p-4 max-w-4xl mx-auto">
-        <p class="text-xl sm:text-2xl text-couteng-light font-medium mb-4">
-          Couteng Engenharia Civil
-        </p>
         <h1
-          class="text-5xl sm:text-7xl font-mono font-light uppercase mb-6 leading-tight"
+          class="text-4xl sm:text-7xl font-black uppercase mb-6 leading-tight"
         >
-          <span class="text-couteng-light block">ENGENHARIA &</span>
-          <span class="text-couteng-highlight">LEGALIZAÇÃO.</span>
+          <span class="text-splan-light block">SOLUÇÕES EM DOCUMENTAÇÃO</span>
+          <span class="text-splan-primary">TÉCNICA E PROJETOS</span>
         </h1>
-        <h2
-          class="text-xl sm:text-3xl font-mono font-light text-couteng-light mb-10"
-        >
-          Da Planta à Propriedade: Soluções completas em Regularização,
-          Segurança (AVCB/CLCB) e Assessoria de Usucapião.
+        <h2 class="text-xl sm:text-2xl font-light text-splan-light mb-10">
+          Equipe especializada no acompanhamento, digitalização e entrega de
+          documentações técnicas para o pós-obra do seu empreendimento.
         </h2>
         <a
-          href="https://wa.me/5511933776122"
+          href="https://wa.me/5511957730797"
           target="_blank"
-          class="inline-block py-4 px-12 text-xl bg-couteng-highlight text-couteng-light font-bold rounded-full shadow-2xl hover:opacity-90 transition duration-300 transform hover:scale-105"
+          class="inline-block py-4 px-12 text-lg bg-splan-primary text-splan-dark font-bold rounded-full shadow-2xl hover:opacity-90 transition duration-300 transform hover:scale-105"
         >
-          Solicite seu Orçamento
+          Fale Conosco Agora
         </a>
       </div>
     </section>
 
-    <section id="quem-somos" class="py-20 sm:py-28 bg-couteng-light">
+    <section id="quem-somos" class="py-20 sm:py-28 bg-splan-light">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <h2
-          class="text-4xl font-mono font-bold mb-12 text-center text-couteng-dark"
+          class="text-4xl font-bold mb-12 text-center text-splan-dark uppercase"
         >
-          QUEM SOMOS & NOSSOS VALORES
+          QUEM SOMOS
         </h2>
-
         <div class="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h3 class="text-3xl font-mono font-bold mb-4 text-couteng-primary">
-              Nossa Essência
-            </h3>
             <p
-              class="text-lg mb-6 leading-relaxed text-couteng-dark/80 font-light"
+              class="text-lg mb-6 leading-relaxed text-splan-dark/80 font-normal"
             >
-              A Couteng Engenharia Civil é especializada em transformar desafios
-              técnicos e burocráticos em soluções concretas. Desde o início das
-              atividades como prestador de serviços autônomo na função de
-              Engenheiro Civil em 2019, após a conclusão da graduação no final
-              de 2018, nosso objetivo sempre foi oferecer um serviço que alia
-              conhecimento de engenharia com a agilidade nos processos de
-              legalização.
+              A SPLAN DIGITAL é uma empresa inovadora que presta serviços
+              especializados no acompanhamento, digitalização, entrega de
+              documentações técnicas e projetos de diversos segmentos.
             </p>
             <p
-              class="text-lg mb-8 leading-relaxed text-couteng-dark/80 font-light"
+              class="text-lg mb-8 leading-relaxed text-splan-dark/80 font-normal"
             >
-              Nossa intenção é oficializar a empresa e alcançar o reconhecimento
-              no mundo empresarial, garantindo a tranquilidade e a conformidade
-              legal do seu patrimônio.
+              O foco principal da SPLAN DIGITAL está na entrega com qualidade de
+              documentações técnicas e projetos compatibilizados que auxiliam o
+              cliente no pós-obra.
             </p>
             <div
-              class="p-6 border-l-4 border-couteng-primary bg-couteng-primary/10 rounded-r-lg shadow-sm"
+              class="p-6 border-l-4 border-splan-primary bg-splan-secondary rounded-r-lg shadow-sm"
             >
-              <h4 class="text-xl font-semibold text-couteng-dark mb-2">
-                Missão:
-              </h4>
-              <p class="text-lg italic text-couteng-dark/90">
-                Fornecer soluções técnicas e legais robustas para a
-                regularização, segurança e valorização de imóveis, garantindo a
-                conformidade e a tranquilidade de nossos clientes em todas as
-                etapas do projeto.
+              <p class="text-xl font-semibold italic text-splan-dark">
+                "Nossa organização desenvolve soluções com engenheiros,
+                arquitetos e técnicos capacitados e comprometidos com a
+                qualidade e o prazo."
               </p>
             </div>
           </div>
-
-          <div class="hidden md:block relative">
-            <div
-              class="relative w-full h-96 overflow-hidden rounded-xl shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500 ease-in-out"
-            >
-              <img
-                src="Assets/images/ceo.jpg"
-                alt="Engenheiro Civil em obra"
-                class="w-full h-full object-cover transform -rotate-2 hover:rotate-0 transition duration-500 ease-in-out"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-16 text-center">
-          <h3 class="text-2xl font-mono font-bold mb-6 text-couteng-primary">
-            Nossos Valores Fundamentais
-          </h3>
-          <div class="grid md:grid-cols-3 gap-8">
-            <div
-              class="p-6 bg-white rounded-lg shadow-lg border-t-2 border-couteng-highlight"
-            >
-              <i
-                data-lucide="shield-check"
-                class="w-8 h-8 text-couteng-highlight mb-3 mx-auto"
-              ></i>
-              <h4
-                class="text-xl font-mono font-semibold mb-2 text-couteng-dark"
-              >
-                Honestidade e Integridade
-              </h4>
-              <p class="text-couteng-dark/70 font-light">
-                Agir com total transparência em todos os processos legais e
-                técnicos.
-              </p>
-            </div>
-            <div
-              class="p-6 bg-white rounded-lg shadow-lg border-t-2 border-couteng-highlight"
-            >
-              <i
-                data-lucide="handshake"
-                class="w-8 h-8 text-couteng-highlight mb-3 mx-auto"
-              ></i>
-              <h4
-                class="text-xl font-mono font-semibold mb-2 text-couteng-dark"
-              >
-                Comprometimento e Pontualidade
-              </h4>
-              <p class="text-couteng-dark/70 font-light">
-                Garantir o cumprimento rigoroso de prazos e o foco total no
-                sucesso do cliente.
-              </p>
-            </div>
-            <div
-              class="p-6 bg-white rounded-lg shadow-lg border-t-2 border-couteng-highlight"
-            >
-              <i
-                data-lucide="award"
-                class="w-8 h-8 text-couteng-highlight mb-3 mx-auto"
-              ></i>
-              <h4
-                class="text-xl font-mono font-semibold mb-2 text-couteng-dark"
-              >
-                Qualidade dos Serviços
-              </h4>
-              <p class="text-couteng-dark/70 font-light">
-                Aplicação das melhores práticas de engenharia para resultados
-                duradouros.
-              </p>
-            </div>
+          <div class="flex justify-center hidden md:block">
+            <img
+              src="assets/images/logo_quem_somos.png"
+              alt="Logo SPLAN DIGITAL"
+              class="rounded-full shadow-2xl w-full max-w-sm h-auto object-cover border-8 border-splan-primary"
+            />
           </div>
         </div>
       </div>
     </section>
 
-    <section id="servicos" class="py-20 sm:py-28 bg-couteng-dark">
+    <section id="servicos" class="py-20 sm:py-28 bg-splan-dark">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <h2
-          class="text-4xl font-mono font-bold mb-4 text-center text-couteng-highlight"
+          class="text-4xl font-bold mb-4 text-center text-splan-primary uppercase"
         >
-          NOSSA ATUAÇÃO
+          NOSSOS SERVIÇOS
         </h2>
         <p class="text-xl text-white text-center mb-16 font-light">
-          A união da Engenharia Civil com a Assessoria Legal imobiliária.
+          Desenvolvemos soluções completas para a entrega de documentações
+          técnicas e projetos, garantindo a qualidade e o prazo do seu
+          empreendimento.
         </p>
-
         <div class="grid md:grid-cols-3 gap-8">
           <div
-            class="bg-white/5 p-8 rounded-xl shadow-xl transition duration-300 hover:shadow-couteng-highlight/50 border-t-4 border-couteng-primary transform hover:scale-[1.02]"
+            class="bg-white/5 p-8 rounded-xl shadow-xl transition duration-300 border-t-4 border-splan-primary transform hover:scale-[1.02]"
           >
-            <div class="text-couteng-highlight mb-4">
-              <i data-lucide="fire-extinguisher" class="w-10 h-10"></i>
+            <div class="text-splan-primary mb-4">
+              <i data-lucide="file-check" class="w-10 h-10"></i>
             </div>
-            <h3 class="text-2xl font-mono font-bold mb-4 text-couteng-light">
-              01. Segurança Predial
+            <h3 class="text-2xl font-bold mb-4 text-splan-light">
+              Desenvolvimento de AS BUILT
             </h3>
             <p class="text-white mb-4 leading-relaxed font-light">
-              Especialistas em AVCB (Auto de Vistoria) e CLCB (Certificado de
-              Licença do Corpo de Bombeiros).
+              Acompanhamento e compatibilização entre projeto e execução, com
+              rastreamento da arquitetura e instalações executadas.
             </p>
             <ul class="text-sm text-white list-disc ml-4 space-y-1 font-light">
-              <li>Projeto e execução de sistemas contra incêndio.</li>
-              <li>Laudos técnicos e ART para vistoria.</li>
-              <li>Renovação e regularização junto aos Bombeiros.</li>
+              <li>Rastreamento de arquitetura e instalações</li>
+              <li>Atualização de bases arquitetônicas</li>
+              <li>Digitalização e entrega final do projeto</li>
             </ul>
           </div>
-
           <div
-            class="bg-white/5 p-8 rounded-xl shadow-xl transition duration-300 hover:shadow-couteng-highlight/50 border-t-4 border-couteng-primary transform hover:scale-[1.02]"
+            class="bg-white/5 p-8 rounded-xl shadow-xl transition duration-300 border-t-4 border-splan-primary transform hover:scale-[1.02]"
           >
-            <div class="text-couteng-highlight mb-4">
-              <i data-lucide="check-circle" class="w-10 h-10"></i>
+            <div class="text-splan-primary mb-4">
+              <i data-lucide="book-marked" class="w-10 h-10"></i>
             </div>
-            <h3 class="text-2xl font-mono font-bold mb-4 text-couteng-light">
-              02. Regularização Imobiliária
+            <h3 class="text-2xl font-bold mb-4 text-splan-light">
+              Elaboração de Data-Book e Manuais
             </h3>
             <p class="text-white mb-4 leading-relaxed font-light">
-              Conformidade total do seu imóvel com as leis municipais e
-              federais.
+              Coletamos as informações do escopo e geramos um Data-Book com
+              didática para eventuais manutenções no pós-obra.
             </p>
             <ul class="text-sm text-white list-disc ml-4 space-y-1 font-light">
-              <li>Solução de pendências e multas.</li>
-              <li>Acompanhamento completo de processos junto à Prefeitura.</li>
-              <li>Elaboração de plantas e projetos de legalização.</li>
+              <li>Coleta de informações com a engenharia</li>
+              <li>Organização de documentação técnica</li>
+              <li>Relatórios e planilhas de auxílio</li>
             </ul>
           </div>
-
           <div
-            class="bg-white/5 p-8 rounded-xl shadow-xl transition duration-300 hover:shadow-couteng-highlight/50 border-t-4 border-couteng-primary transform hover:scale-[1.02]"
+            class="bg-white/5 p-8 rounded-xl shadow-xl transition duration-300 border-t-4 border-splan-primary transform hover:scale-[1.02]"
           >
-            <div class="text-couteng-highlight mb-4">
-              <i data-lucide="scale" class="w-10 h-10"></i>
+            <div class="text-splan-primary mb-4">
+              <i data-lucide="drafting-compass" class="w-10 h-10"></i>
             </div>
-            <h3 class="text-2xl font-mono font-bold mb-4 text-couteng-light">
-              03. Assessoria de Usucapião
+            <h3 class="text-2xl font-bold mb-4 text-splan-light">
+              Projetos 3D e Assessoria
             </h3>
             <p class="text-white mb-4 leading-relaxed font-light">
-              Serviços técnicos essenciais para o processo de Usucapião
-              Extrajudicial e Judicial.
+              Desenvolvimento de projetos 3D (Revit, SketchUp) e assessoria
+              completa em licitações, orçamentos e medições.
             </p>
             <ul class="text-sm text-white list-disc ml-4 space-y-1 font-light">
-              <li>Elaboração de plantas e memoriais descritivos.</li>
-              <li>Levantamento topográfico.</li>
-              <li>Laudos e ARTs.</li>
+              <li>Desenhos Humanizados 2D e 3D</li>
+              <li>Assessoria em Licitações e Orçamentos</li>
+              <li>Atualização de memoriais descritivos</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="compliance-highlight" class="py-16">
-      <div id="compliance-overlay"></div>
-      <div
-        class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl text-center text-couteng-light"
-      >
-        <h3 class="text-3xl font-mono font-bold mb-2">
-          Legalidade é Segurança
-        </h3>
-        <p class="text-xl font-light">
-          A regularização do seu imóvel evita multas, valoriza o patrimônio e
-          garante a tranquilidade.
+    <section
+      id="impact-phrase-section"
+      class="py-24 sm:py-32 text-center text-white relative flex items-center justify-center"
+    >
+      <div class="absolute inset-0 bg-splan-dark opacity-70"></div>
+      <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-3xl sm:text-5xl font-black leading-tight">
+          "TRABALHANDO SEMPRE COM QUALIDADE E EM EQUIPE"
         </p>
       </div>
     </section>
 
-    <section id="diferenciais" class="py-20 sm:py-28 bg-couteng-light">
+    <section id="diferenciais" class="py-20 sm:py-28 bg-splan-secondary">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <h2
-          class="text-4xl font-mono font-bold mb-16 text-center text-couteng-dark"
+          class="text-4xl font-bold mb-16 text-center text-splan-dark uppercase"
         >
-          NOSSA PROPOSTA DE VALOR
+          POR QUE ESCOLHER A SPLAN DIGITAL?
         </h2>
-
         <div class="grid md:grid-cols-3 gap-8">
           <div
-            class="p-6 rounded-lg bg-white shadow-md border-t-2 border-couteng-primary flex flex-col items-start transition duration-300 transform hover:scale-[1.02] hover:shadow-xl"
+            class="p-6 rounded-lg bg-white shadow-md border-t-2 border-splan-primary flex flex-col items-start transition duration-300 transform hover:scale-[1.02] hover:shadow-xl"
           >
-            <i
-              data-lucide="clock"
-              class="w-8 h-8 text-couteng-primary mb-3"
-            ></i>
-            <h3 class="text-xl font-mono font-semibold mb-2 text-couteng-dark">
-              Foco em Prazo e Agilidade
+            <i data-lucide="award" class="w-8 h-8 text-splan-primary mb-3"></i>
+            <h3 class="text-xl font-semibold mb-2 text-splan-dark">
+              Qualidade e Foco no Pós-Obra
             </h3>
-            <p class="text-couteng-dark/70 font-light">
-              Processos otimizados para garantir sua conformidade no menor tempo
-              possível.
+            <p class="text-splan-dark/70 font-light">
+              Foco na entrega de documentação técnica de qualidade que auxilia o
+              cliente no pós-obra.
             </p>
           </div>
-
           <div
-            class="p-6 rounded-lg bg-white shadow-md border-t-2 border-couteng-primary flex flex-col items-start transition duration-300 transform hover:scale-[1.02] hover:shadow-xl"
+            class="p-6 rounded-lg bg-white shadow-md border-t-2 border-splan-primary flex flex-col items-start transition duration-300 transform hover:scale-[1.02] hover:shadow-xl"
           >
-            <i
-              data-lucide="gavel"
-              class="w-8 h-8 text-couteng-primary mb-3"
-            ></i>
-            <h3 class="text-xl font-mono font-semibold mb-2 text-couteng-dark">
-              Tranquilidade Burocrática
+            <i data-lucide="users" class="w-8 h-8 text-splan-primary mb-3"></i>
+            <h3 class="text-xl font-semibold mb-2 text-splan-dark">
+              Equipe Capacitada
             </h3>
-            <p class="text-couteng-dark/70 font-light">
-              Gerenciamos toda a documentação e interação com órgãos públicos
-              (Prefeitura e Bombeiros).
+            <p class="text-splan-dark/70 font-light">
+              Engenheiros, arquitetos e técnicos capacitados e comprometidos com
+              seu empreendimento.
             </p>
           </div>
-
           <div
-            class="p-6 rounded-lg bg-white shadow-md border-t-2 border-couteng-primary flex flex-col items-start transition duration-300 transform hover:scale-[1.02] hover:shadow-xl"
+            class="p-6 rounded-lg bg-white shadow-md border-t-2 border-splan-primary flex flex-col items-start transition duration-300 transform hover:scale-[1.02] hover:shadow-xl"
           >
             <i
-              data-lucide="wallet"
-              class="w-8 h-8 text-couteng-primary mb-3"
+              data-lucide="clipboard-check"
+              class="w-8 h-8 text-splan-primary mb-3"
             ></i>
-            <h3 class="text-xl font-mono font-semibold mb-2 text-couteng-dark">
-              Valorização Garantida
+            <h3 class="text-xl font-semibold mb-2 text-splan-dark">
+              Compatibilização de Projetos
             </h3>
-            <p class="text-couteng-dark/70 font-light">
-              Um imóvel regularizado e seguro vale mais no mercado.
+            <p class="text-splan-dark/70 font-light">
+              Acompanhamento e compatibilização eficientes entre o projeto e o
+              que foi executado na obra.
+            </p>
+          </div>
+          <div
+            class="p-6 rounded-lg bg-white shadow-md border-t-2 border-splan-primary flex flex-col items-start transition duration-300 transform hover:scale-[1.02] hover:shadow-xl"
+          >
+            <i data-lucide="clock" class="w-8 h-8 text-splan-primary mb-3"></i>
+            <h3 class="text-xl font-semibold mb-2 text-splan-dark">
+              Compromisso com o Prazo
+            </h3>
+            <p class="text-splan-dark/70 font-light">
+              Nossa organização é comprometida com a qualidade e o prazo de
+              entrega do seu empreendimento.
+            </p>
+          </div>
+          <div
+            class="p-6 rounded-lg bg-white shadow-md border-t-2 border-splan-primary flex flex-col items-start transition duration-300 transform hover:scale-[1.02] hover:shadow-xl"
+          >
+            <i data-lucide="brain" class="w-8 h-8 text-splan-primary mb-3"></i>
+            <h3 class="text-xl font-semibold mb-2 text-splan-dark">
+              Soluções Inovadoras
+            </h3>
+            <p class="text-splan-dark/70 font-light">
+              Somos uma empresa inovadora que presta serviços especializados
+              para diversos segmentos.
+            </p>
+          </div>
+          <div
+            class="p-6 rounded-lg bg-white shadow-md border-t-2 border-splan-primary flex flex-col items-start transition duration-300 transform hover:scale-[1.02] hover:shadow-xl"
+          >
+            <i
+              data-lucide="briefcase"
+              class="w-8 h-8 text-splan-primary mb-3"
+            ></i>
+            <h3 class="text-xl font-semibold mb-2 text-splan-dark">
+              Assessoria Completa
+            </h3>
+            <p class="text-splan-dark/70 font-light">
+              Oferecemos assessoria em Licitações, Orçamentos, Levantamentos,
+              Termos Aditivos e Medições.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contato" class="py-20 sm:py-28 bg-couteng-dark">
+    <section id="projetos" class="py-20 sm:py-28 bg-splan-dark">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <h2
-          class="text-4xl font-mono font-bold mb-12 text-center text-couteng-highlight"
+          class="text-4xl font-bold mb-12 text-center text-splan-primary uppercase"
         >
-          FALE COM NOSSO ENGENHEIRO
+          PROJETOS REALIZADOS
         </h2>
 
+        <div
+          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
+        >
+          <div
+            class="bg-splan-secondary rounded-lg overflow-hidden shadow-xl transition duration-300 transform hover:scale-[1.02] border-t-4 border-splan-primary"
+          >
+            <img
+              src="assets/images/projetos/atacadao-servico.png"
+              alt="Projeto Atacadão"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-2 text-splan-dark">ATACADÃO</h3>
+              <p class="text-sm text-splan-dark/80">
+                Acompanhamento e execução de As Built de instalações elétricas,
+                hidrossanitárias, HVAC, combate a incêndio e cabeamento
+                estruturado.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-splan-secondary rounded-lg overflow-hidden shadow-xl transition duration-300 transform hover:scale-[1.02] border-t-4 border-splan-primary"
+          >
+            <img
+              src="assets/images/projetos/fini-servico.png"
+              alt="Projeto Fini - Sanchez Cano"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-2 text-splan-dark">
+                FINI - SANCHEZ CANO
+              </h3>
+              <p class="text-sm text-splan-dark/80">
+                Auditoria e atualização dos As Built entregues pelos
+                fornecedores de instalações elétricas e ar-condicionado.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-splan-secondary rounded-lg overflow-hidden shadow-xl transition duration-300 transform hover:scale-[1.02] border-t-4 border-splan-primary"
+          >
+            <img
+              src="assets/images/projetos/sede-huawei1.png"
+              alt="Projeto Huawei"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-2 text-splan-dark">
+                SEDE DA HUAWEI
+              </h3>
+              <p class="text-sm text-splan-dark/80">
+                Acompanhamento e execução de As Built de instalações elétricas,
+                hidrossanitárias, HVAC, combate a incêndio, cabeamento
+                estruturado. Levantamento quantitativo para replanilhamento de
+                quantidades.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-splan-secondary rounded-lg overflow-hidden shadow-xl transition duration-300 transform hover:scale-[1.02] border-t-4 border-splan-primary"
+          >
+            <img
+              src="assets/images/projetos/plenum-servico.png"
+              alt="Projeto Plenum"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-2 text-splan-dark">PLENUM</h3>
+              <p class="text-sm text-splan-dark/80">
+                Acompanhamento e execução de As Built de Arquitetura,
+                instalações elétricas, hidrossanitárias, HVAC, combate a
+                incêndio, cabeamento estruturado, gases especiais e
+                ar-comprimido. Execução de data-book para manutenção.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-splan-secondary rounded-lg overflow-hidden shadow-xl transition duration-300 transform hover:scale-[1.02] border-t-4 border-splan-primary"
+          >
+            <img
+              src="assets/images/projetos/sede-marilan1.png"
+              alt="Projeto Marilan Sede 1"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-2 text-splan-dark">
+                NOVA SEDE MARILAN
+              </h3>
+              <p class="text-sm text-splan-dark/80">
+                Acompanhamento e execução de As Built de Arquitetura,
+                instalações elétricas, hidrossanitárias, HVAC, combate a
+                incêndio, cabeamento estruturado. Execução de data-book para
+                manutenção.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-splan-secondary rounded-lg overflow-hidden shadow-xl transition duration-300 transform hover:scale-[1.02] border-t-4 border-splan-primary"
+          >
+            <img
+              src="assets/images/projetos/sede-marilan2.png"
+              alt="Projeto Marilan Sede 2"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-2 text-splan-dark">
+                NOVA SEDE MARILAN
+              </h3>
+              <p class="text-sm text-splan-dark/80">
+                Acompanhamento e execução de As Built de Arquitetura,
+                instalações elétricas, hidrossanitárias, HVAC, combate a
+                incêndio, cabeamento estruturado. Execução de data-book para
+                manutenção.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-splan-secondary rounded-lg overflow-hidden shadow-xl transition duration-300 transform hover:scale-[1.02] border-t-4 border-splan-primary"
+          >
+            <img
+              src="assets/images/projetos/sede-servico-sanofi.png"
+              alt="Projeto Sanofi"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-2 text-splan-dark">
+                SEDE ADM. SANOFI
+              </h3>
+              <p class="text-sm text-splan-dark/80">
+                Acompanhamento e execução de As Built de Arquitetura,
+                instalações elétricas, hidrossanitárias, HVAC, combate a
+                incêndio, cabeamento estruturado. Execução de data-book para
+                manutenção.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-splan-secondary rounded-lg overflow-hidden shadow-xl transition duration-300 transform hover:scale-[1.02] border-t-4 border-splan-primary"
+          >
+            <img
+              src="assets/images/projetos/santander-servico.png"
+              alt="Projeto Santander"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-2 text-splan-dark">
+                SANTANDER CASA 03
+              </h3>
+              <p class="text-sm text-splan-dark/80">
+                Acompanhamento e execução de As Built de Arquitetura,
+                instalações elétricas, hidrossanitárias, HVAC, combate a
+                incêndio, cabeamento estruturado.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-splan-secondary rounded-lg overflow-hidden shadow-xl transition duration-300 transform hover:scale-[1.01] border-l-4 border-splan-primary mt-12"
+        >
+          <div class="md:flex">
+            <div class="md:w-1/3">
+              <img
+                src="assets/images/projetos/cptm.jpg"
+                alt="Projeto CPTM - Estação Francisco Morato"
+                class="w-full h-64 md:h-full object-cover"
+              />
+            </div>
+            <div class="md:w-2/3 p-6 flex flex-col justify-center">
+              <h3 class="text-2xl font-bold mb-2 text-splan-dark">
+                CPTM - ESTAÇÃO FRANCISCO MORATO
+              </h3>
+              <p class="text-sm text-splan-dark/70 mb-4">
+                Rua Gerônimo Caetano Garcia - Centro, Francisco Morato, SP. Área
+                Construída: 6.000M².
+              </p>
+              <ul class="text-base text-splan-dark space-y-2 list-disc ml-5">
+                <li class="text-sm text-splan-dark/80">
+                  Execução de As Built de instalações elétricas (Média Tensão,
+                  Baixa Tensão, Distribuição De Força e Diagramas, SPDA).
+                </li>
+                <li class="text-sm text-splan-dark/80">
+                  Instalações Hidráulicas, Hidrossanitárias, Estação de
+                  Tratamento de Esgoto, Águas Pluviais e Reuso.
+                </li>
+                <li class="text-sm text-splan-dark/80">
+                  Sistemas de Telecomunicação (CFTV, Cronometria, Telefonia e
+                  dados, Sonorização, entre outros).
+                </li>
+                <li class="text-sm text-splan-dark/80">
+                  Instalações de HVAC, Instalações de Combate e prevenção a
+                  Incêndio.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-splan-secondary rounded-lg overflow-hidden shadow-xl transition duration-300 transform hover:scale-[1.01] border-l-4 border-splan-primary mt-6"
+        >
+          <div class="md:flex">
+            <div class="md:w-1/3">
+              <img
+                src="assets/images/projetos/estacao-bruno-mendes.png"
+                alt="Projeto CPTM - Estação Bruno Covas-Mendes-Vila Natal"
+                class="w-full h-64 md:h-full object-cover"
+              />
+            </div>
+            <div class="md:w-2/3 p-6 flex flex-col justify-center">
+              <h3 class="text-2xl font-bold mb-2 text-splan-dark">
+                ESTAÇÃO BRUNO COVAS-MENDES-VILA NATAL
+              </h3>
+              <p class="text-sm text-splan-dark/70 mb-4">
+                Estrada dos Mendes, 92, São Paulo - SP. Área Construída:
+                4,500M².
+              </p>
+              <ul class="text-base text-splan-dark space-y-2 list-disc ml-5">
+                <li class="text-sm text-splan-dark/80">
+                  Execução de As Built de instalações elétricas (Média Tensão,
+                  Baixa Tensão, Distribuição De Força e Diagramas, SPDA).
+                </li>
+                <li class="text-sm text-splan-dark/80">
+                  Instalações Hidrossanitárias, Estação de Tratamento de Esgoto,
+                  Águas Pluviais e Reuso.
+                </li>
+                <li class="text-sm text-splan-dark/80">
+                  Sistemas de Telecomunicação (CFTV, Cronometria, Telefonia e
+                  dados, Sonorização, entre outros).
+                </li>
+                <li class="text-sm text-splan-dark/80">
+                  Instalações de Combate e prevenção a Incêndio.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-splan-secondary rounded-lg overflow-hidden shadow-xl transition duration-300 transform hover:scale-[1.01] border-l-4 border-splan-primary mt-6"
+        >
+          <div class="md:flex">
+            <div class="md:w-1/3">
+              <img
+                src="assets/images/projetos/joao-dias.png"
+                alt="Projeto CPTM - Estação João Dias"
+                class="w-full h-64 md:h-full object-cover"
+              />
+            </div>
+            <div class="md:w-2/3 p-6 flex flex-col justify-center">
+              <h3 class="text-2xl font-bold mb-2 text-splan-dark">
+                ESTAÇÃO JOÃO DIAS
+              </h3>
+              <p class="text-sm text-splan-dark/70 mb-4">
+                Avenida da Nações Unidas, São Paulo - SP. Área Construída:
+                5,600M².
+              </p>
+              <ul class="text-base text-splan-dark space-y-2 list-disc ml-5">
+                <li class="text-sm text-splan-dark/80">
+                  Execução de As Built de instalações elétricas (Média Tensão,
+                  Baixa Tensão, Distribuição De Força e Diagramas, SPDA).
+                </li>
+                <li class="text-sm text-splan-dark/80">
+                  Instalações Hidrossanitárias, Estação de Tratamento de Esgoto,
+                  Águas Pluviais e Reuso.
+                </li>
+                <li class="text-sm text-splan-dark/80">
+                  Sistemas de Telecomunicação (CFTV, Cronometria, Telefonia e
+                  dados, Sonorização, entre outros).
+                </li>
+                <li class="text-sm text-splan-dark/80">
+                  Instalações de Combate e prevenção a Incêndio.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-splan-secondary rounded-lg overflow-hidden shadow-xl transition duration-300 transform hover:scale-[1.01] border-l-4 border-splan-primary mt-6"
+        >
+          <div class="md:flex">
+            <div class="md:w-1/3">
+              <img
+                src="assets/images/projetos/varginha.png"
+                alt="Projeto CPTM - Estação Varginha"
+                class="w-full h-64 md:h-full object-cover"
+              />
+            </div>
+            <div class="md:w-2/3 p-6 flex flex-col justify-center">
+              <h3 class="text-2xl font-bold mb-2 text-splan-dark">
+                ESTAÇÃO VARGINHA
+              </h3>
+              <p class="text-sm text-splan-dark/70 mb-4">
+                Av. Paulo G. Reimberg, Parelheiros - SP. Área Construída:
+                2,100M².
+              </p>
+              <ul class="text-base text-splan-dark space-y-2 list-disc ml-5">
+                <li class="text-sm text-splan-dark/80">
+                  Execução de As Built de instalações elétricas (Média Tensão,
+                  Baixa Tensão, Distribuição De Força e Diagramas, SPDA).
+                </li>
+                <li class="text-sm text-splan-dark/80">
+                  Instalações Hidrossanitárias, Estação de Tratamento de Esgoto,
+                  Águas Pluviais e Reuso.
+                </li>
+                <li class="text-sm text-splan-dark/80">
+                  Sistemas de Telecomunicação (CFTV, Cronometria, Telefonia e
+                  dados, Sonorização, entre outros).
+                </li>
+                <li class="text-sm text-splan-dark/80">
+                  Instalações de Combate e prevenção a Incêndio.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-splan-secondary rounded-lg overflow-hidden shadow-xl transition duration-300 transform hover:scale-[1.01] border-l-4 border-splan-primary mt-6"
+        >
+          <div class="md:flex">
+            <div class="md:w-1/3">
+              <img
+                src="assets/images/projetos/dr-consultapj.png"
+                alt="Projeto Dr. Consulta"
+                class="w-full h-64 md:h-full object-cover"
+              />
+            </div>
+            <div class="md:w-2/3 p-6 flex flex-col justify-center">
+              <h3 class="text-2xl font-bold mb-2 text-splan-dark">
+                DR. CONSULTA - DIVERSAS UNIDADES
+              </h3>
+              <p class="text-sm text-splan-dark/70 mb-4">
+                Área Atuada: 16,200M².
+              </p>
+              <ul class="text-base text-splan-dark space-y-2 list-disc ml-5">
+                <li class="text-sm text-splan-dark/80">
+                  Acompanhamento e execução de As Built de instalações
+                  elétricas, hidrossanitárias, HVAC, combate a incêndio,
+                  cabeamento estruturado.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="clientes" class="py-20 sm:py-28 bg-splan-dark">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <h2
+          class="text-4xl font-bold mb-12 text-center text-splan-primary uppercase"
+        >
+          Nossos Clientes
+        </h2>
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+          <img
+            src="assets/images/clients/atacadao.png"
+            alt="Atacadão"
+            class="h-12 md:h-16 transition-all duration-300"
+          />
+          <img
+            src="assets/images/clients/fini.png"
+            alt="Fini"
+            class="h-12 md:h-16 transition-all duration-300"
+          />
+          <img
+            src="assets/images/clients/huawei.png"
+            alt="Huawei"
+            class="h-12 md:h-16 transition-all duration-300"
+          />
+          <img
+            src="assets/images/clients/marilan.png"
+            alt="Marilan"
+            class="h-12 md:h-16 transition-all duration-300"
+          />
+          <img
+            src="assets/images/clients/plenum.png"
+            alt="Plenum"
+            class="h-12 md:h-16 transition-all duration-300"
+          />
+          <img
+            src="assets/images/clients/santander.png"
+            alt="Santander"
+            class="h-12 md:h-16 transition-all duration-300"
+          />
+          <img
+            src="assets/images/clients/sanofi.png"
+            alt="Sanofi"
+            class="h-12 md:h-16 transition-all duration-300"
+          />
+          <img
+            src="assets/images/clients/cptm.png"
+            alt="CPTM"
+            class="h-12 md:h-16 transition-all duration-300"
+          />
+          <img
+            src="assets/images/clients/dr-consulta.png"
+            alt="Dr. Consulta"
+            class="h-12 md:h-16 transition-all duration-300"
+          />
+          <img
+            src="assets/images/clients/google.png"
+            alt="Google"
+            class="h-12 md:h-16 transition-all duration-300"
+          />
+          <img
+            src="assets/images/clients/btg.png"
+            alt="BTG"
+            class="h-12 md:h-16 transition-all duration-300"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="py-20 sm:py-28 bg-splan-light">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <h2
+          class="text-4xl font-bold mb-12 text-center text-splan-dark uppercase"
+        >
+          VAMOS REALIZAR SEU PROJETO?
+        </h2>
         <div class="grid md:grid-cols-2 gap-12">
           <div
-            class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-couteng-primary"
+            class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-splan-primary"
           >
-            <h3 class="text-2xl font-mono font-semibold mb-6 text-couteng-dark">
-              Solicite seu Orçamento
+            <h3 class="text-2xl font-semibold mb-6 text-splan-dark">
+              Envie sua mensagem
             </h3>
             <form action="#" method="POST" onsubmit="handleFormSubmit(event)">
               <div class="mb-4">
                 <input
                   type="text"
-                  name="nome"
                   placeholder="Seu Nome/Empresa"
-                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-couteng-primary focus:border-couteng-primary transition duration-200"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-splan-primary focus:border-splan-primary transition duration-200"
                   required
                 />
               </div>
               <div class="mb-4">
                 <input
                   type="email"
-                  name="email"
                   placeholder="Seu Melhor E-mail"
-                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-couteng-primary focus:border-couteng-primary transition duration-200"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-splan-primary focus:border-splan-primary transition duration-200"
                   required
                 />
               </div>
               <div class="mb-4">
                 <input
                   type="tel"
-                  name="telefone"
                   placeholder="Telefone/WhatsApp (Ex: 11 9xxxx-xxxx)"
-                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-couteng-primary focus:border-couteng-primary transition duration-200"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-splan-primary focus:border-splan-primary transition duration-200"
                   required
                 />
               </div>
               <div class="mb-6">
                 <textarea
-                  name="mensagem"
-                  placeholder="Fale sobre seu projeto ou necessidade de regularização/AVCB"
+                  placeholder="Fale sobre seu projeto ou necessidade"
                   rows="4"
-                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-couteng-primary focus:border-couteng-primary transition duration-200"
+                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-splan-primary focus:border-splan-primary transition duration-200"
                   required
                 ></textarea>
               </div>
               <button
                 type="submit"
-                class="w-full py-3 bg-couteng-highlight text-couteng-light font-bold rounded-lg shadow-md hover:opacity-90 transition duration-300 transform hover:scale-[1.01]"
+                class="w-full py-3 bg-splan-primary text-splan-dark font-bold rounded-lg shadow-md hover:opacity-90 transition duration-300 transform hover:scale-[1.01]"
               >
-                Enviar via WhatsApp
+                Solicitar Orçamento via WhatsApp
               </button>
             </form>
-            <div
-              id="form-message"
-              class="hidden mt-4 p-3 bg-green-100 text-green-700 rounded-lg text-center"
-            ></div>
           </div>
-
-          <div class="p-8 bg-couteng-primary rounded-xl shadow-lg">
-            <h3
-              class="text-2xl font-mono font-semibold mb-6 text-couteng-light"
-            >
+          <div class="p-8 bg-splan-dark rounded-xl shadow-lg">
+            <h3 class="text-2xl font-semibold mb-6 text-splan-primary">
               Nosso Contato
             </h3>
-
             <div class="space-y-6">
               <div class="flex items-start space-x-4">
                 <i
                   data-lucide="phone"
-                  class="w-6 h-6 text-couteng-highlight flex-shrink-0"
+                  class="w-6 h-6 text-splan-primary flex-shrink-0"
                 ></i>
                 <div>
-                  <p class="font-semibold text-couteng-light">
+                  <p class="font-semibold text-splan-light">
                     Telefone/WhatsApp
                   </p>
                   <a
-                    href="https://wa.me/5511933776122"
+                    href="https://wa.me/5511957730797"
                     target="_blank"
-                    class="text-white/70 hover:text-couteng-highlight transition duration-200"
-                    >11 93377-6122</a
+                    class="text-white/70 hover:text-splan-primary transition duration-200"
+                    >(11) 95773-0797</a
                   >
                 </div>
               </div>
-
               <div class="flex items-start space-x-4">
                 <i
                   data-lucide="mail"
-                  class="w-6 h-6 text-couteng-highlight flex-shrink-0"
+                  class="w-6 h-6 text-splan-primary flex-shrink-0"
                 ></i>
                 <div>
-                  <p class="font-semibold text-couteng-light">E-mail</p>
-                  <p class="text-white/70">Couteng_civil@hotmail.com</p>
+                  <p class="font-semibold text-splan-light">E-mail</p>
+                  <p class="text-white/70">comercial.splan@outlook.com</p>
                 </div>
               </div>
-
-              <div class="flex items-start space-x-4">
-                <i
-                  data-lucide="map-pin"
-                  class="w-6 h-6 text-couteng-highlight flex-shrink-0"
-                ></i>
-                <div>
-                  <p class="font-semibold text-couteng-light">Atendimento</p>
-                  <p class="text-white/70">
-                    Atendimento em São Paulo e Grande SP.
-                  </p>
-                </div>
-              </div>
-
               <div class="flex items-start space-x-4">
                 <i
                   data-lucide="instagram"
-                  class="w-6 h-6 text-couteng-highlight flex-shrink-0"
+                  class="w-6 h-6 text-splan-primary flex-shrink-0"
                 ></i>
                 <div>
-                  <p class="font-semibold text-couteng-light">Redes Sociais</p>
+                  <p class="font-semibold text-splan-light">Instagram</p>
                   <a
-                    href="https://www.instagram.com/coutengengenharia/"
+                    href="https://www.instagram.com/splan_digital/"
                     target="_blank"
-                    class="text-couteng-highlight hover:underline transition duration-200"
-                    >@coutengengenharia</a
+                    class="text-white/70 hover:text-splan-primary transition duration-200"
+                    >@splan_digital</a
                   >
                 </div>
               </div>
-            </div>
-
-            <div class="mt-8 pt-4 border-t border-gray-700">
-              <p class="text-xs text-couteng-light/50">
-                Couteng Engenharia Civil.
-              </p>
+              <div class="flex items-start space-x-4">
+                <i
+                  data-lucide="map-pin"
+                  class="w-6 h-6 text-splan-primary flex-shrink-0"
+                ></i>
+                <div>
+                  <p class="font-semibold text-splan-light">Localização</p>
+                  <p class="text-white/70">
+                    R. Melvin Jones, 143 – Smart Place - Centro, Osasco - SP
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <footer class="bg-couteng-dark py-8">
+    <footer class="bg-splan-dark py-8">
       <div
-        class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-couteng-light text-sm"
+        class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-splan-light text-sm"
       >
         <div class="mb-4">
           <img
-            src="Assets/images/logo Couteng.png"
-            alt="Logo Couteng Engenharia"
-            class="h-16 mx-auto"
+            src="assets/images/logo.png"
+            alt="Logo SPLAN DIGITAL"
+            class="h-40 mx-auto"
           />
         </div>
-
         <p class="mb-1">
-          &copy; <span id="current-year"></span> Couteng Engenharia Civil. Todos
-          os direitos reservados.
+          &copy; <span id="current-year"></span> SPLAN DIGITAL. Todos os
+          direitos reservados.
         </p>
-        <p class="text-xs text-couteng-light/70">
-          Desenvolvido por Lucas Silva.
+        <p class="text-xs text-splan-light/70">
+          Criado por
+          <span class="font-semibold text-splan-primary">LucasSilva.Dev</span>
         </p>
       </div>
     </footer>
@@ -688,10 +1042,8 @@
         const header = document.getElementById("main-header");
         if (window.scrollY > 50) {
           header.classList.add("header-scrolled");
-          header.classList.remove("bg-transparent");
         } else {
           header.classList.remove("header-scrolled");
-          header.classList.add("bg-transparent");
         }
       };
 
@@ -699,11 +1051,8 @@
       document
         .getElementById("mobile-menu-button")
         .addEventListener("click", () => {
-          const menu = document.getElementById("mobile-menu");
-          menu.classList.toggle("hidden");
+          document.getElementById("mobile-menu").classList.toggle("hidden");
         });
-
-      // 4. Fechar Menu Mobile ao clicar em um link (para âncoras)
       document.querySelectorAll("#mobile-menu a").forEach((link) => {
         if (!link.href.startsWith("http")) {
           link.addEventListener("click", () => {
@@ -712,49 +1061,25 @@
         }
       });
 
-      // 5. Envio de Formulário via WhatsApp
+      // 4. Envio de Formulário via WhatsApp
       function handleFormSubmit(event) {
         event.preventDefault();
-
         const form = event.target;
-        const nome = form.elements.nome.value;
-        const email = form.elements.email.value;
-        const telefone = form.elements.telefone.value;
-        const mensagem = form.elements.mensagem.value;
+        const nome = form.elements[0].value;
+        const email = form.elements[1].value;
+        const telefone = form.elements[2].value;
+        const mensagem = form.elements[3].value;
 
         const textoPadrao =
-          "Olá, gostaria de um orçamento para a Couteng Engenharia. Seguem meus dados e a descrição do projeto:\n\n";
-        const mensagemFormatada =
-          `${textoPadrao}` +
-          `*Nome/Empresa:* ${nome}\n` +
-          `*E-mail:* ${email}\n` +
-          `*Telefone/WhatsApp:* ${telefone}\n\n` +
-          `*Projeto:* ${mensagem}`;
-
+          "Olá, gostaria de um orçamento da SPLAN DIGITAL. Seguem meus dados:\n\n";
+        const mensagemFormatada = `${textoPadrao}*Nome/Empresa:* ${nome}\n*E-mail:* ${email}\n*Telefone:* ${telefone}\n\n*Projeto:* ${mensagem}`;
         const mensagemCodificada = encodeURIComponent(mensagemFormatada);
 
-        const numeroWhatsApp = "5511933776122";
+        const numeroWhatsApp = "5511957730797"; // Número principal
         const whatsappUrl = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
 
         window.open(whatsappUrl, "_blank");
-
-        const formMessage = document.getElementById("form-message");
-        formMessage.textContent = "✅ Redirecionando para o WhatsApp...";
-        formMessage.classList.remove("hidden");
-        formMessage.classList.remove("bg-green-100", "text-green-700");
-        formMessage.classList.add(
-          "bg-couteng-highlight/50",
-          "text-couteng-dark"
-        );
-
-        setTimeout(() => {
-          form.reset();
-          formMessage.classList.add("hidden");
-          formMessage.classList.remove(
-            "bg-couteng-highlight/50",
-            "text-couteng-dark"
-          );
-        }, 1500);
+        form.reset();
       }
     </script>
   </body>
